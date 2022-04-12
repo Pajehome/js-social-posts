@@ -121,5 +121,13 @@ function stampaCard() {
 stampaCard()
 
 function miPiace(){
+    // Milestone 3** - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
+    
+    let button = document.querySelector('.like-button')
+    button.addEventListener('click', function() {
+        this.classList.add('like-button--liked')
+        console.log(this)
+    })
     
 }
+miPiace()
