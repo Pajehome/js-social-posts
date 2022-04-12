@@ -4,7 +4,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/300?image=171",
         "author": {
-            "nome": "Phil Mangione",
+            "name": "Phil Mangione",
             "image": "https://unsplash.it/300/300?image=15"
         },
         "likes": 80,
@@ -26,7 +26,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=234",
         "author": {
-            "nome": "Chiara Passaro",
+            "name": "Chiara Passaro",
             "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 78,
@@ -37,7 +37,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
-            "nome": "Luca Formicola",
+            "name": "Luca Formicola",
             "image": 'null'
         },
         "likes": 56,
@@ -48,7 +48,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=534",
         "author": {
-            "nome": "Alessandro Sainato",
+            "name": "Alessandro Sainato",
             "image": "https://unsplash.it/300/300?image=29"
         },
         "likes": 95,
@@ -77,27 +77,13 @@ function stampaCard() {
     let card = "";
     for (let i = 0; i < posts.length; i++) {
 
-        let autoreN = (Object.values(posts[i]['author']['nome']));
-        let nomeAutore = autoreN.join("")
-        //console.log(nomeAutore)
-
-        let autoreI = (Object.values(posts[i]['author']['image']));
-        let imageAutore = autoreI.join("")
-        //console.log(imageAutore)
-
-        let contentO = (Object.values(posts[i]['content']))
-        let content = contentO.join("")
-
-        let date = (Object.values(posts[i]['created']))
-        let  created = date.join("")
-
-        let media = (Object.values(posts[i]['media']));
-        let image = media.join("")
-        
-        let likes = (Object.values(posts[i]['likes']));
-        console.log(likes)
-        
-        
+        let nomeAutore = posts[i].author.name; 
+        let imageAutore = posts[i].author.image;
+        let content = posts[i].content;
+        let created = posts[i].created;
+        let media = posts[i].media;
+        let likes = posts[i].likes;
+  
         card +=
            `<div class="post">
                 <div class="post__header">
@@ -113,7 +99,7 @@ function stampaCard() {
                 </div>
                  <div class="post__text">${content}</div>
                 <div class="post__image">
-                    <img src=${image} alt="">
+                    <img src=${media} alt="">
                 </div>
                 <div class="post__footer">
                     <div class="likes js-likes">
@@ -128,7 +114,7 @@ function stampaCard() {
                         </div>
                     </div>
                 </div>
-            </div>`
+            </div>`;
     }
     container.innerHTML += card
 }
