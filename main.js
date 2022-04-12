@@ -120,3 +120,6 @@ function stampaCard() {
 }
 stampaCard()
 
+function miPiace(){
+    
+}
