@@ -75,7 +75,7 @@ Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.*/
 
 function stampaCard() {
     let card = "";
-    for (let i = 0; i < posts.length; i++) {
+    for (i = 0; i < posts.length; i++) {
 
         let nomeAutore = posts[i].author.name; 
         let imageAutore = posts[i].author.image;
@@ -83,7 +83,7 @@ function stampaCard() {
         let created = posts[i].created;
         let media = posts[i].media;
         let likes = posts[i].likes;
-  
+        
         card +=
            `<div class="post">
                 <div class="post__header">
@@ -115,19 +115,34 @@ function stampaCard() {
                     </div>
                 </div>
             </div>`;
+                 
     }
     container.innerHTML += card
 }
+
 stampaCard()
 
-function miPiace(){
+function miPiace(likes){
     // Milestone 3** - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
-    
+    let counter = document.getElementById('like-counter-1')
     let button = document.querySelector('.like-button')
+    let clicked = false
     button.addEventListener('click', function() {
+       if(!clicked){
+        clicked = true
         this.classList.add('like-button--liked')
-        console.log(this)
-    })
-    
+        let p = parseInt(counter.textContent, 10)
+        counter.innerHTML = p+1
+    } else{
+        clicked = false
+        this.classList.remove('like-button--liked')
+        let p = parseInt(counter.textContent, 10)
+        counter.innerHTML = p-1 
+    }  
+
+    })  
 }
 miPiace()
+
+
+
