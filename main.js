@@ -115,34 +115,43 @@ function stampaCard() {
                     </div>
                 </div>
             </div>`;
-                 
+                   
     }
     container.innerHTML += card
+    
 }
 
 stampaCard()
-
-function miPiace(likes){
+let clicked = false;
+function miPiace(){
     // Milestone 3** - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
-    let counter = document.getElementById('like-counter-1')
     let button = document.querySelector('.like-button')
-    let clicked = false
-    button.addEventListener('click', function() {
-       if(!clicked){
-        clicked = true
-        this.classList.add('like-button--liked')
-        let p = parseInt(counter.textContent, 10)
-        counter.innerHTML = p+1
-    } else{
-        clicked = false
-        this.classList.remove('like-button--liked')
-        let p = parseInt(counter.textContent, 10)
-        counter.innerHTML = p-1 
-    }  
-
-    })  
+    let counter = document.querySelector('#like-counter-1')
+    console.log(counter)
+    console.log(button)
+    for (let i = 0; i < posts.length; i++){
+        button.addEventListener('click', function() {
+            if(!clicked){
+             clicked = true
+             this.classList.add('like-button--liked')
+             let p = parseInt(counter.textContent, 10)
+             counter.innerHTML = p+1
+             let click = posts.filter(idLike =>{
+                return idLike.id === posts[i].id
+                })
+            console.log(click)
+        } else{
+             clicked = false
+             this.classList.remove('like-button--liked')
+             let p = parseInt(counter.textContent, 10)
+             counter.innerHTML = p-1 
+         }  
+          
+        })  
+    }
+    
 }
 miPiace()
 
-
+/*Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like*/
 
